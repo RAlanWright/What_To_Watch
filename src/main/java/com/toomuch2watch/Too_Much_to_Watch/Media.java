@@ -1,24 +1,39 @@
 package com.toomuch2watch.Too_Much_to_Watch;
 
 abstract class Media {
-    protected String show_id;
+    protected String showId;
     protected String type;          // type can be either Movie or TV Show
     protected String title;
     protected String director;
     protected String cast;
     protected String country;
-    protected String date_added;
+    protected String dateAdded;
     protected int releaseYear;
     protected String rating;
     protected String genre;
     protected String description;
 
-    public String getShow_id() {
-        return show_id;
+    public Media(String showId, String type, String title, String director, String cast, String country,
+                 String dateAdded, int releaseYear, String rating, String genre, String description) {
+        setShowId(showId);
+        setType(type);
+        setTitle(title);
+        setDirector(director);
+        setCast(cast);
+        setCountry(country);
+        setdateAdded(dateAdded);
+        setReleaseYear(releaseYear);
+        setRating(rating);
+        setGenre(genre);
+        setDescription(description);
     }
 
-    public void setShow_id(String show_id) {
-        this.show_id = show_id;
+    public String getshowId() {
+        return showId;
+    }
+
+    public void setShowId(String showId) {
+        this.showId = showId;
     }
 
     public String getType() {
@@ -61,12 +76,12 @@ abstract class Media {
         this.country = country;
     }
 
-    public String getDate_added() {
-        return date_added;
+    public String getdateAdded() {
+        return dateAdded;
     }
 
-    public void setDate_added(String date_added) {
-        this.date_added = date_added;
+    public void setdateAdded(String dateAdded) {
+        this.dateAdded = dateAdded;
     }
 
     public int getReleaseYear() {
