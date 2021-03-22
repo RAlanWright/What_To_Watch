@@ -63,18 +63,23 @@ public class Main {
         String cast = metadata[4];
         String country = metadata[5];
 //        String dateAdded = metadata[6];
-        int releaseYear = Integer.parseInt(metadata[7]);
+        String releaseYear = metadata[7];
         String rating = metadata[8];
         String genre = metadata[10];
         String description = metadata[11];
 
-        if (metadata[1].equals("Movie")) {
+
+        // Skip header line
+        if (metadata[0].equals("show_id")) {
+            return null;
+        }
+        else if (metadata[1].equals("Movie")) {
             int duration = Integer.parseInt(metadata[9]);
-            return new Movie( type, title, director, cast, country, releaseYear, rating, duration, genre,
+            return new Movie( type, title, director, cast, country, Integer.parseInt(releaseYear), rating, duration, genre,
                     description);
         }
         else  {
-            return new Series(type, title, director, cast, country, releaseYear, rating, genre, description);
+            return new Series(type, title, director, cast, country, Integer.parseInt(releaseYear), rating, genre, description);
         }
     }
 }
