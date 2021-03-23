@@ -11,6 +11,7 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
+
         List<Media> media = readMediaFromCSV("netflix_titles.csv");
 
         for (Media m : media)
@@ -75,6 +76,7 @@ public class Main {
         if (metadata[0].equals("show_id")) {
             return null;
         }
+
         else if (metadata[1].equals("Movie")) {
             int duration = Integer.parseInt(metadata[9]);
             return new Movie( type, title, director, cast, country, Integer.parseInt(releaseYear), rating, duration, genre,
