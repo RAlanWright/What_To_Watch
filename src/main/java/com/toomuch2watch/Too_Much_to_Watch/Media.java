@@ -1,7 +1,7 @@
 package com.toomuch2watch.Too_Much_to_Watch;
 
 abstract class Media {
-    protected String showId;
+    //    protected String showId;
     protected String type;          // type can be either Movie or TV Show
     protected String title;
     protected String director;
@@ -13,28 +13,27 @@ abstract class Media {
     protected String genre;
     protected String description;
 
-    public Media(String showId, String type, String title, String director, String cast, String country,
-                 String dateAdded, int releaseYear, String rating, String genre, String description) {
-        setShowId(showId);
+    public Media(String type, String title, String director, String cast, String country, int releaseYear, String rating, String genre, String description) {
+//        setShowId(showId);
         setType(type);
         setTitle(title);
         setDirector(director);
         setCast(cast);
         setCountry(country);
-        setdateAdded(dateAdded);
+//        setdateAdded(dateAdded);
         setReleaseYear(releaseYear);
         setRating(rating);
         setGenre(genre);
         setDescription(description);
     }
 
-    public String getshowId() {
-        return showId;
-    }
-
-    public void setShowId(String showId) {
-        this.showId = showId;
-    }
+//    public String getshowId() {
+//        return showId;
+//    }
+//
+//    public void setShowId(String showId) {
+//        this.showId = showId;
+//    }
 
     public String getType() {
         return type;
@@ -76,13 +75,13 @@ abstract class Media {
         this.country = country;
     }
 
-    public String getdateAdded() {
-        return dateAdded;
-    }
-
-    public void setdateAdded(String dateAdded) {
-        this.dateAdded = dateAdded;
-    }
+//    public String getdateAdded() {
+//        return dateAdded;
+//    }
+//
+//    public void setdateAdded(String dateAdded) {
+//        this.dateAdded = dateAdded;
+//    }
 
     public int getReleaseYear() {
         return releaseYear;
@@ -114,5 +113,10 @@ abstract class Media {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String toString() {
+        return "TV Show: " +  title + "; Director: " + director + "; cast: " + "; country: " + country + "; release " +
+                "year: " + releaseYear + "; rating: " + rating + "; genre: " + genre + "; description: " + description;
     }
 }
