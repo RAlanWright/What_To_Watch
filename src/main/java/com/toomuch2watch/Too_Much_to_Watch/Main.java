@@ -1,7 +1,6 @@
 package com.toomuch2watch.Too_Much_to_Watch;
 
-import java.io.BufferedReader;
-import java.io.IOException;
+import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -16,7 +15,17 @@ public class Main {
 
         for (Media m : media) {
             System.out.println(m);
+        }
 
+        try {
+            PrintWriter pw = new PrintWriter(new FileOutputStream("outputTest.txt"));
+
+            for (Media m : media) {
+                pw.println(m);
+            }
+            pw.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("Problem writing to file :(");
         }
 
     }
@@ -72,22 +81,24 @@ public class Main {
         String rating = metadata[8];
         String genre = metadata[10];
         String description = metadata[11];
+        String duration = metadata[9];
 
+//        System.out.println(metadata[1]);
 
         // Skip header line
-        if (metadata[0].equals("show_id")) {
-            return null;
-        }
-        else if (metadata[1].equals("Movie")) {
-            // Ignore " min" for duration column
-            String[] movieDuration = metadata[9].split(" ");
-            // Only grab the int from movieDuration and parse it as int
-            int duration = Integer.parseInt(movieDuration[0]);
-            return new Movie( type, title, director, cast, country, Integer.parseInt(releaseYear), rating, duration, genre,
+//        if (metadata[0].equals("show_id")) {
+//            return null;
+//        }
+//        if (metadata[1].equals("Movie")) {
+//            // Ignore " min" for duration column
+//            String[] movieDuration = metadata[9].split(" ");
+//            // Only grab the int from movieDuration and parse it as int
+//            int duration = Integer.parseInt(movieDuration[0]);
+            return new Movie( type, title, director, cast, country, releaseYear, rating, duration, genre,
                     description);
-        }
-        else  {
-            return new Series(type, title, director, cast, country, Integer.parseInt(releaseYear), rating, genre, description);
-        }
+//        }
+//        else  {
+//            return new Series(type, title, director, cast, country, releaseYear, rating, genre, description);
+//        }
     }
 }
