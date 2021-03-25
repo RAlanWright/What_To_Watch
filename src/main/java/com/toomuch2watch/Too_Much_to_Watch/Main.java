@@ -18,11 +18,14 @@ public class Main {
         }
 
         try {
+            // Setting up for file print
             PrintWriter pw = new PrintWriter(new FileOutputStream("outputTest.txt"));
 
+            // Print each line to file
             for (Media m : media) {
                 pw.println(m);
             }
+            // Close after finished
             pw.close();
         } catch (FileNotFoundException e) {
             System.out.println("Problem writing to file :(");
@@ -81,24 +84,24 @@ public class Main {
         String rating = metadata[8];
         String genre = metadata[10];
         String description = metadata[11];
-        String duration = metadata[9];
+        String[] duration = metadata[9].split(" ");
 
 //        System.out.println(metadata[1]);
 
         // Skip header line
-//        if (metadata[0].equals("show_id")) {
-//            return null;
-//        }
-//        if (metadata[1].equals("Movie")) {
-//            // Ignore " min" for duration column
-//            String[] movieDuration = metadata[9].split(" ");
-//            // Only grab the int from movieDuration and parse it as int
+        if (metadata[0].equals("show_id")) {
+            return null;
+        }
+        else if (metadata[1].equals("Movie")) {
+            // Ignore " min" for duration column
+//            String[] duration = metadata[9].split(" ");
+            // Only grab the int from movieDuration and parse it as int
 //            int duration = Integer.parseInt(movieDuration[0]);
-            return new Movie( type, title, director, cast, country, releaseYear, rating, duration, genre,
+            return new Movie(type, title, director, cast, country, releaseYear, rating, duration[0], genre,
                     description);
-//        }
-//        else  {
-//            return new Series(type, title, director, cast, country, releaseYear, rating, genre, description);
-//        }
+        }
+        else  {
+            return new Series(type, title, director, cast, country, releaseYear, rating, genre, description);
+        }
     }
 }
