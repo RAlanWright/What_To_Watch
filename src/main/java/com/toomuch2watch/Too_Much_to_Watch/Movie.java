@@ -1,18 +1,18 @@
 package com.toomuch2watch.Too_Much_to_Watch;
 
 public class Movie extends Media {
-    protected int duration;
+    protected String duration;
 
-    public int getDuration() {
+    public String getDuration() {
         return duration;
     }
 
-    public void setDuration(int duration) {
+    public void setDuration(String duration) {
         this.duration = duration;
     }
 
     public Movie(String type, String title, String director, String cast, String country,
-                 int releaseYear, String rating, int duration, String genre, String description) {
+                 String releaseYear, String rating, String duration, String genre, String description) {
         super(type, title, director, cast, country, releaseYear, rating, genre, description);
         setDuration(duration);
     }
