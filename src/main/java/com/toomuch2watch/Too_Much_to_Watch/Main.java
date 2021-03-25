@@ -14,9 +14,10 @@ public class Main {
 
         List<Media> media = readMediaFromCSV("netflix_titles.csv");
 
-        for (Media m : media)
+        for (Media m : media) {
             System.out.println(m);
 
+        }
 
     }
 
@@ -28,11 +29,12 @@ public class Main {
         try (BufferedReader br = Files.newBufferedReader(pathToFile, StandardCharsets.UTF_8)) {
             String line = br.readLine();
 
-            br.readLine(); // Ignore header
+//            br.readLine(); // Ignore header
 
             while (line != null) {
 
-                String[] attributes = line.split(",");
+
+                String[] attributes = line.split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)");
 
                 Media mediaItem = createMedia(attributes);
 
@@ -76,9 +78,11 @@ public class Main {
         if (metadata[0].equals("show_id")) {
             return null;
         }
-
         else if (metadata[1].equals("Movie")) {
-            int duration = Integer.parseInt(metadata[9]);
+            // Ignore " min" for duration column
+            String[] movieDuration = metadata[9].split(" ");
+            // Only grab the int from movieDuration and parse it as int
+            int duration = Integer.parseInt(movieDuration[0]);
             return new Movie( type, title, director, cast, country, Integer.parseInt(releaseYear), rating, duration, genre,
                     description);
         }
