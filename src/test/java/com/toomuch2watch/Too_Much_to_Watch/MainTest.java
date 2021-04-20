@@ -19,7 +19,7 @@ public class MainTest {
 
         while (scnr.hasNext()) {
             String thisLine = scnr.nextLine();
-            String[] result = thisLine.split(",");
+            String[] result = thisLine.split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)");
             System.out.println(Arrays.toString(result));
             if (result[0].equals("s30")) {
                 break;

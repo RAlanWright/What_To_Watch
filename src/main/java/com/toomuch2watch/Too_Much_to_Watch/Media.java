@@ -1,7 +1,7 @@
 package com.toomuch2watch.Too_Much_to_Watch;
 
 abstract class Media {
-    //    protected String showId;
+    protected String showId;
     protected String type;          // type can be either Movie or TV Show
     protected String title;
     protected String director;
@@ -27,13 +27,13 @@ abstract class Media {
         setDescription(description);
     }
 
-//    public String getshowId() {
-//        return showId;
-//    }
-//
-//    public void setShowId(String showId) {
-//        this.showId = showId;
-//    }
+    public String getshowId() {
+        return showId;
+    }
+
+    public void setShowId(String showId) {
+        this.showId = showId;
+    }
 
     public String getType() {
         return type;

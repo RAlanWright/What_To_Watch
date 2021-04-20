@@ -6,14 +6,22 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
+
+// Just needs to call the method that reads
 public class Main {
     public static void main(String[] args) {
+
+
+
+//        DataFileParser.
 
         List<Media> media = readMediaFromCSV("netflix_titles.csv");
 
         for (Media m : media) {
+//            if (m.getshowId() )
             System.out.println(m);
         }
 
@@ -57,7 +65,6 @@ public class Main {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
         return media;
     }
 
@@ -74,22 +81,31 @@ public class Main {
 //    protected String description;
 
     private static Media createMedia(String[] metadata) {
+        String mediaId = metadata[0];
         String type = metadata[1];
         String title = metadata[2];
         String director = metadata[3];
         String cast = metadata[4];
         String country = metadata[5];
-//        String dateAdded = metadata[6];
+        String dateAdded = metadata[6];
         String releaseYear = metadata[7];
         String rating = metadata[8];
+        String[] movieDuration = metadata[9].split(" ");
+        String duration = movieDuration[0];
         String genre = metadata[10];
         String description = metadata[11];
-        String[] duration = metadata[9].split(" ");
 
+        // For efficiency purposes
+        HashMap<String, Object> mediaAttributes = new HashMap<String, Object>();
+        // Map<String, String> "" = new HashMap<String, String>();
+        // List<> "" = new ArrayList<>(); <-- Less Restrictive
+        // ArrayList<> "" = new ArrayList<>(); <-- More Restrictive -- Might make more sense in some cases
+
+//        List<> keyStore = new ArrayList<>();
 //        System.out.println(metadata[1]);
 
         // Skip header line
-        if (metadata[0].equals("show_id")) {
+        if (mediaId.equals("show_id")) {
             return null;
         }
         else if (metadata[1].equals("Movie")) {
@@ -97,7 +113,7 @@ public class Main {
 //            String[] duration = metadata[9].split(" ");
             // Only grab the int from movieDuration and parse it as int
 //            int duration = Integer.parseInt(movieDuration[0]);
-            return new Movie(type, title, director, cast, country, releaseYear, rating, duration[0], genre,
+            return new Movie(type, title, director, cast, country, releaseYear, rating, duration, genre,
                     description);
         }
         else  {

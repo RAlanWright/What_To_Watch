@@ -19,6 +19,6 @@ public class Movie extends Media {
 
     @Override
     public String toString() {
-        return super.toString() + "; duration: " + duration;
+        return super.toString() + "; duration: " + duration + " minutes";
     }
 }
