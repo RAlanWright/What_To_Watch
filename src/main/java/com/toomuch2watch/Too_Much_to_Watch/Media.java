@@ -11,9 +11,10 @@ abstract class Media {
     protected String releaseYear;
     protected String rating;
     protected String genre;
+    protected String duration;
     protected String description;
 
-    public Media(String type, String title, String director, String cast, String country, String releaseYear, String rating, String genre, String description) {
+    public Media(String type, String title, String director, String cast, String country, String releaseYear, String rating, String genre, String duration, String description) {
 //        setShowId(showId);
         setType(type);
         setTitle(title);
@@ -83,6 +84,15 @@ abstract class Media {
 //        this.dateAdded = dateAdded;
 //    }
 
+
+    public String getDuration() {
+        return duration;
+    }
+
+    public void setDuration(String duration) {
+        this.duration = duration;
+    }
+
     public String getReleaseYear() {
         return releaseYear;
     }
@@ -116,7 +126,6 @@ abstract class Media {
     }
 
     public String toString() {
-        return "type: " + type + "; title: " +  title + "; Director: " + director + "; cast: " + "; country: " + country + "; release " +
-                "year: " + releaseYear + "; rating: " + rating + "; genre: " + genre + "; description: " + description;
+        return "\n\t(" + type + ")\t" +  title + "\n\tDirector: " + director + "\n\tCast: " + cast+ "\n\tCountry: " + country + "\n\tRelease Year: " + releaseYear + "\n\tRating: " + rating + "\n\tGenre: " + genre;
     }
 }
